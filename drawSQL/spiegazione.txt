@@ -1,0 +1,25 @@
+1. Tabella Elemento Catalogo:
+La tabella elemento_catalogo utilizza la strategia SINGLE_TABLE, che implica che tutte le sottoclassi (Libro e Rivista)
+condividano la stessa tabella ma con una colonna discriminante per gestire i diversi tipi.
+
+2. Tabella Utente:
+La tabella utente memorizza tutte le informazioni relative agli utenti del sistema di prestito.
+Ogni utente è identificato in modo univoco tramite la chiave primaria id.
+
+3. Tabella Prestiti:
+ La tabella prestiti memorizza informazioni sui prestiti effettuati.
+ Le chiavi esterne utente_id e elemento_prestato_isbn collegano i prestiti agli utenti e
+ agli elementi del catalogo rispettivamente, stabilendo relazioni Many-to-One.
+
+Relazioni nel Diagramma
+
+Relazione Many-to-One tra prestiti e utente:
+
+Un utente può effettuare più prestiti. La relazione Many-to-One riflette che ogni prestito è associato a un solo utente,
+ma un utente può avere più prestiti nel tempo.
+
+Relazione Many-to-One tra prestiti e elemento_catalogo:
+
+Un elemento del catalogo può essere prestato più volte. La relazione Many-to-One riflette che
+ogni prestito è associato a un solo elemento del catalogo,
+ma un elemento del catalogo può essere prestato molte volte a diversi utenti.
