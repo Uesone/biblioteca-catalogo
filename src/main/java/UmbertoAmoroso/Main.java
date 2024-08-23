@@ -15,7 +15,7 @@ public class Main {
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("biblioteca");
 
     public static void main(String[] args) {
-        // Crea un EntityManager
+
         EntityManager entityManager = emf.createEntityManager();
 
         // Crea un'istanza di UtenteDAO
@@ -36,7 +36,7 @@ public class Main {
             utenteDAO.salva(utente3);
             System.out.println("Utenti aggiunti con successo!");
 
-            // Aggiungi alcuni prestiti
+
             Prestito prestito1 = new Prestito(utente1, LocalDate.now().minusDays(10), LocalDate.now().plusDays(5));
             Prestito prestito2 = new Prestito(utente2, LocalDate.now().minusDays(20), LocalDate.now().minusDays(5));
             Prestito prestito3 = new Prestito(utente3, LocalDate.now().minusDays(30), LocalDate.now().plusDays(10));
@@ -64,7 +64,7 @@ public class Main {
             e.printStackTrace();
             System.out.println("Errore nell'aggiungere utenti o prestiti.");
         } finally {
-            // Chiudi EntityManager
+
             entityManager.close();
             emf.close();
         }
