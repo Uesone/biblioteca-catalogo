@@ -1,10 +1,9 @@
 package UmbertoAmoroso.Entities;
 
 import jakarta.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "prestiti")
 public class Prestito {
 
     @Id
@@ -12,35 +11,23 @@ public class Prestito {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "utente_id", nullable = false)
     private Utente utente;
 
-    @ManyToOne
-    @JoinColumn(name = "elemento_prestato_isbn", nullable = false)
-    private ElementoCatalogo elementoPrestato;
+    private LocalDate dataPrestito;
+    private LocalDate dataRestituzionePrevista;
+    private LocalDate dataRestituzioneEffettiva;
 
-    @Column(name = "data_inizio_prestito")
-    private Date dataInizioPrestito;
-
-    @Column(name = "data_restituzione_prevista")
-    private Date dataRestituzionePrevista;
-
-    @Column(name = "data_restituzione_effettiva")
-    private Date dataRestituzioneEffettiva;
-
-
+    // Costruttore senza argomenti
     public Prestito() {}
 
-
-    public Prestito(Utente utente, ElementoCatalogo elementoPrestato, Date dataInizioPrestito, Date dataRestituzionePrevista, Date dataRestituzioneEffettiva) {
+    // Costruttore con Utente, dataPrestito e dataRestituzionePrevista
+    public Prestito(Utente utente, LocalDate dataPrestito, LocalDate dataRestituzionePrevista) {
         this.utente = utente;
-        this.elementoPrestato = elementoPrestato;
-        this.dataInizioPrestito = dataInizioPrestito;
+        this.dataPrestito = dataPrestito;
         this.dataRestituzionePrevista = dataRestituzionePrevista;
-        this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
     }
 
-
+    // Getter e setter
     public Long getId() {
         return id;
     }
@@ -57,35 +44,27 @@ public class Prestito {
         this.utente = utente;
     }
 
-    public ElementoCatalogo getElementoPrestato() {
-        return elementoPrestato;
+    public LocalDate getDataPrestito() {
+        return dataPrestito;
     }
 
-    public void setElementoPrestato(ElementoCatalogo elementoPrestato) {
-        this.elementoPrestato = elementoPrestato;
+    public void setDataPrestito(LocalDate dataPrestito) {
+        this.dataPrestito = dataPrestito;
     }
 
-    public Date getDataInizioPrestito() {
-        return dataInizioPrestito;
-    }
-
-    public void setDataInizioPrestito(Date dataInizioPrestito) {
-        this.dataInizioPrestito = dataInizioPrestito;
-    }
-
-    public Date getDataRestituzionePrevista() {
+    public LocalDate getDataRestituzionePrevista() {
         return dataRestituzionePrevista;
     }
 
-    public void setDataRestituzionePrevista(Date dataRestituzionePrevista) {
+    public void setDataRestituzionePrevista(LocalDate dataRestituzionePrevista) {
         this.dataRestituzionePrevista = dataRestituzionePrevista;
     }
 
-    public Date getDataRestituzioneEffettiva() {
+    public LocalDate getDataRestituzioneEffettiva() {
         return dataRestituzioneEffettiva;
     }
 
-    public void setDataRestituzioneEffettiva(Date dataRestituzioneEffettiva) {
+    public void setDataRestituzioneEffettiva(LocalDate dataRestituzioneEffettiva) {
         this.dataRestituzioneEffettiva = dataRestituzioneEffettiva;
     }
 }
